@@ -1,7 +1,28 @@
 <main>
 
 
-<button class="btn btn-success m-3"> Mostrar Contactos </button>
+ <!-- Botones -->   
+<div class="d-flex justify-content-center mb-4">
+    <button class="btn btn-success m-3" onclick="crearTablaContactos()"> Mostrar Contactos </button>
+</div>
 
+<!-- Tabla de contactos -->
+
+<div class="container-sm mb-4" id ="divContactos" >
+     
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <?!= obtenerDatosHTML('tabla_contactos'); ?> -->
+        </tbody>
+    </table>
+</div>
 
     </main>

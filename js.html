@@ -1,9 +1,57 @@
 <script>
 
+function crearTablaContactos() {
+    const divContactos = document.getElementById("divContactos");
+
+    google.script.run
+    
+    .withSuccessHandler(
+        function(obj){
+            let tabla = document.createElement("table");
+            let tablaHeader = document.createElement("thead");
+            let tableBody = document.createElement("tbody");
+
+            Array.from(obj).forEach(filaActual, i) => {
+                let fila = document.createElement("tr");
+
+                filaActual.forEach(celdaActual => {
+                    let celda = document.createElement("td");
+                    celda.textContent = celdaActual;
+                    fila.appendChild(celda);
+                });
+
+                if (i == 0){
+                    tablaHeader.appendChild(fila);
+                    tabla.appendChild(tablaHeader);
+                } else {
+
+                tableBody.appendChild(fila);
+                }
+    
+            }; 
 
 
+            // Agregamos clases al encabezado
+            tablaHeader.classList.add("table-dark");
+
+            //Agregamos el cuerpo de la tabla
+
+            tabla.appendChild(tableBody);
+
+            //Agregamos clases de Bootstrap a la tabla
+
+            tabla.classList.add("table", "table-striped","border-3");
+
+            //Agregamos la tabla a la página
+
+            document.getElementById("divContactos").appendChild(tabla); 
+        }
 
 
+    ).obtenerContactos();
+
+
+    }
 
 
     </script>
