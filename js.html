@@ -7,36 +7,41 @@ function crearTablaContactos() {
     
     .withSuccessHandler(
         function(obj){
-            let tabla = document.createElement("table");
+
+            let tabla = document.getElementById("tablaContactos");
+            if (tabla){
+                tabla.remove();
+            }
+            tabla = document.createElement("table");
+            tabla.id = "tablaContactos";
             let tablaHeader = document.createElement("thead");
-            let tableBody = document.createElement("tbody");
+            let tablaBody = document.createElement("tbody");
 
-            Array.from(obj).forEach(filaActual, i) => {
+            // creamos la cabecera
+            let primeraFila = document.createElement("tr");
+            for (let i = 0; i < obj[0].length; i++) {
+
+                let celda = document.createElement("th");
+                celda.textContent = obj[0][i];
+                primeraFila.appendChild(celda);
+
+            }
+            tablaHeader.appendChild(primeraFila);
+            tabla.appendChild(tablaHeader);
+
+            // creamos el body de la tabla
+            for (let i = 1; i < obj.length; i++) {
                 let fila = document.createElement("tr");
-
-                filaActual.forEach(celdaActual => {
+                for (let j = 0; j < obj[i].length; j++) {
                     let celda = document.createElement("td");
-                    celda.textContent = celdaActual;
+                    celda.textContent = obj[i][j];
                     fila.appendChild(celda);
-                });
-
-                if (i == 0){
-                    tablaHeader.appendChild(fila);
-                    tabla.appendChild(tablaHeader);
-                } else {
-
-                tableBody.appendChild(fila);
                 }
-    
-            }; 
+                tablaBody.appendChild(fila);
+            }
 
 
-            // Agregamos clases al encabezado
-            tablaHeader.classList.add("table-dark");
-
-            //Agregamos el cuerpo de la tabla
-
-            tabla.appendChild(tableBody);
+            tabla.appendChild(tablaBody);
 
             //Agregamos clases de Bootstrap a la tabla
 
@@ -51,7 +56,9 @@ function crearTablaContactos() {
     ).obtenerContactos();
 
 
-    }
+   } 
 
+
+/*  */
 
     </script>

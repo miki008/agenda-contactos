@@ -21,7 +21,7 @@ function obtenerContactos(){
     let hoja = SpreadsheetApp.openById('14qFioWE5iplfM3aNSgctBvsin6kQz4H0vacB5V1337M').getActiveSheet();
     let datos = hoja.getDataRange().getValues();
     
-    datos.shift();
+   // datos.shift();
     Logger.log(datos);
     return datos;
 }
