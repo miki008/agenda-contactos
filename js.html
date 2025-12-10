@@ -1,17 +1,33 @@
 <script>
 
+const NOTIFICACON_OK = 1;
+const NOTIFICACON_DANGER = 2;
+const NOTIFICACON_WARNING = 3;
+
+
 function crearTablaContactos() {
     const divContactos = document.getElementById("divContactos");
-
-    google.script.run
-    
-    .withSuccessHandler(
-        function(obj){
-
-            let tabla = document.getElementById("tablaContactos");
+    let tabla = document.getElementById("tablaContactos");
             if (tabla){
                 tabla.remove();
             }
+    google.script.run
+    
+    .withSuccessHandler(crearTablaContactosCorrectamente)
+    .withFailureHandler(crearTablaContactosError) 
+    .obtenerContactos();
+
+   } 
+
+
+/*  */
+
+function crearTablaContactosCorrectamente(obj){
+let tabla = document.getElementById("tablaContactos");
+            if (tabla){
+                tabla.remove();
+            }
+          
             tabla = document.createElement("table");
             tabla.id = "tablaContactos";
             let tablaHeader = document.createElement("thead");
@@ -45,20 +61,64 @@ function crearTablaContactos() {
 
             //Agregamos clases de Bootstrap a la tabla
 
-            tabla.classList.add("table", "table-striped","border-3");
+            tabla.classList.add("table", "table-striped","border","border-4","border-dark");
 
             //Agregamos la tabla a la página
 
             document.getElementById("divContactos").appendChild(tabla); 
+        
+            // Mostrar notificación de éxito
+            crearNotificacion(NOTIFICACON_OK,"Contactos obtenidos correctamente"," Todo en orden");
+
+
         }
 
 
-    ).obtenerContactos();
+        function crearTablaContactosError(err){
+            // Mostrar notificación de error
+            crearNotificacion(NOTIFICACON_DANGER,"No se han podido obtener los datos" ,"ERROR");
+        }
+
+        function crearNotificacion(tipo, mensaje, titulo){
+
+            // obenemos datos
+            let mensajeNotificacion = document.getElementById("mensajeNotificacion");
+            let tituloNotificacion = document.getElementById("tituloNotificacion");     
+            let elementoNotificacion = document.getElementById("notificacion");
+            let iconoNotificacion = document.getElementById("iconoNotificacion");   
+
+            let notificacion = bootstrap.Toast.getOrCreateInstance(elementoNotificacion); 
+
+            // editar notificación
+            mensajeNotificacion.textContent = mensaje;
+            tituloNotificacion.textContent = titulo;
 
 
-   } 
+            switch(tipo){
 
+                case NOTIFICACON_OK: // éxito
+                iconoNotificacion.className = "";
+                iconoNotificacion.classList.add("bi", "bi-check2-square");
+                elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-verde-oscuro');
+                break;
 
-/*  */
+                case NOTIFICACON_DANGER: // error
+                iconoNotificacion.className = "";
+                iconoNotificacion.classList.add("bi", "bi-bug");
+                elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-rojo-oscuro');
+                break;
 
+                case NOTIFICACON_WARNING: // advertencia
+                iconoNotificacion.className = "";
+                iconoNotificacion.classList.add("bi", "bi-exclamation-square");
+                elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-amarillo-oscuro');
+                break;
+
+            }   
+
+            // mostrar notificación
+
+            notificacion.show();
+
+        }
     </script>
