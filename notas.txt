@@ -1,4 +1,6 @@
-
-Estamos en el minuto 9 del vídeo 25:43 curso avanzodo
-No nos aparece la tabla correctamente
-Revisar funciones
+Vídeo 9
+Video 10__Footer y variables CSS
+Vídeo 11__Notificaciones
+Vídeo 12__Tipos de 11__Notificaciones
+Vídeo 13__Refactorizando notificaciones ***Pendiente de hacer commit
+Vídeo 14__Crear icono de carga- Pure CSS loader -- loading.io/css/

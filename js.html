@@ -1,18 +1,20 @@
 <script>
 
-const NOTIFICACON_OK = 1;
-const NOTIFICACON_DANGER = 2;
-const NOTIFICACON_WARNING = 3;
-
 
 function crearTablaContactos() {
-    const divContactos = document.getElementById("divContactos");
-    let tabla = document.getElementById("tablaContactos");
-            if (tabla){
-                tabla.remove();
-            }
-    google.script.run
+   // const divContactos = document.getElementById("divContactos");
+
+    // borrar tabla si existe
+    eliminarTabla();
+
+    // crear loader
     
+    //crearLoaderAnillo('divContactos');
+
+    crearLoaderPuntos('divContactos');;
+
+
+    google.script.run
     .withSuccessHandler(crearTablaContactosCorrectamente)
     .withFailureHandler(crearTablaContactosError) 
     .obtenerContactos();
@@ -68,57 +70,126 @@ let tabla = document.getElementById("tablaContactos");
             document.getElementById("divContactos").appendChild(tabla); 
         
             // Mostrar notificación de éxito
-            crearNotificacion(NOTIFICACON_OK,"Contactos obtenidos correctamente"," Todo en orden");
+            crearNotificacionOK("Contactos obtenidos correctamente"," Todo en orden");
 
 
+            // eliminar loader
+            eliminarLoader();
         }
 
 
-        function crearTablaContactosError(err){
+        function crearTablaContactosError(){
             // Mostrar notificación de error
-            crearNotificacion(NOTIFICACON_DANGER,"No se han podido obtener los datos" ,"ERROR");
+            crearNotificacionError("No se han podido obtener los datos" ,"ERROR");
+
+            // eliminar loader
+            eliminarLoader();
         }
 
-        function crearNotificacion(tipo, mensaje, titulo){
+
+function crearNotificacion(mensaje, titulo){
 
             // obenemos datos
-            let mensajeNotificacion = document.getElementById("mensajeNotificacion");
-            let tituloNotificacion = document.getElementById("tituloNotificacion");     
+            document.getElementById("mensajeNotificacion").textContent  = mensaje;
+            document.getElementById("tituloNotificacion").textContent  = titulo;     
+            
+            // elemento notificación
             let elementoNotificacion = document.getElementById("notificacion");
-            let iconoNotificacion = document.getElementById("iconoNotificacion");   
+            bootstrap.Toast.getOrCreateInstance(elementoNotificacion).show();
 
-            let notificacion = bootstrap.Toast.getOrCreateInstance(elementoNotificacion); 
+            
+}
 
-            // editar notificación
-            mensajeNotificacion.textContent = mensaje;
-            tituloNotificacion.textContent = titulo;
+function crearNotificacionOK(mensaje, titulo){
+   
+    crearNotificacion(mensaje, titulo);
+    crearIconoNotificacionOK();
+    crearColorNotificacion('--color-verde-oscuro');
+
+}
+
+function crearNotificacionError(mensaje, titulo){
+
+    crearNotificacion(mensaje, titulo);
+    crearIconoNotificacionError();
+    crearColorNotificacion('--color-rojo-oscuro');
+    
+}
+
+function crearNotificacionAdvertencia(mensaje, titulo){
+    
+    crearNotificacion(mensaje, titulo);
+    crearIconoNotificacionAdvertencia();
+   crearColorNotificacion('--color-amarillo-oscuro');
+}
 
 
-            switch(tipo){
+function crearIconoNotificacionOK(){
 
-                case NOTIFICACON_OK: // éxito
-                iconoNotificacion.className = "";
-                iconoNotificacion.classList.add("bi", "bi-check2-square");
-                elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-verde-oscuro');
-                break;
+    document.getElementById('iconoNotificacion').className = "";
+    document.getElementById('iconoNotificacion').classList.add("bi", "bi-check2-square");
+    
+}
 
-                case NOTIFICACON_DANGER: // error
-                iconoNotificacion.className = "";
-                iconoNotificacion.classList.add("bi", "bi-bug");
-                elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-rojo-oscuro');
-                break;
+function crearIconoNotificacionError(){
 
-                case NOTIFICACON_WARNING: // advertencia
-                iconoNotificacion.className = "";
-                iconoNotificacion.classList.add("bi", "bi-exclamation-square");
-                elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-amarillo-oscuro');
-                break;
+    document.getElementById('iconoNotificacion').className = "";
+    document.getElementById('iconoNotificacion').classList.add("bi", "bi-bug");
+    
+}
 
-            }   
 
-            // mostrar notificación
+function crearIconoNotificacionAdvertencia(){
 
-            notificacion.show();
+    document.getElementById('iconoNotificacion').className = "";
+    document.getElementById('iconoNotificacion').classList.add("bi", "bi-exclamation-square");
+    
+}
 
-        }
+function crearColorNotificacion(color){
+  
+                let elementoNotificacion = document.getElementById("notificacion");
+                elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue(color);   
+}
+
+
+function crearLoader(elementoPadre){
+
+    eliminarLoader();
+    let loader = document.createElement("div");
+    loader.id = "loader";
+    loader.appendChild(document.createElement("div"));
+    loader.appendChild(document.createElement("div"));
+    loader.appendChild(document.createElement("div"));
+    loader.appendChild(document.createElement("div"));
+    return document.getElementById(elementoPadre).appendChild(loader);    
+}
+
+function eliminarLoader(){
+
+    let loader = document.getElementById("loader");
+            if (loader){
+                loader.remove();
+            }
+}   
+
+function crearLoaderAnillo(elementoPadre){
+
+    let loader = crearLoader(elementoPadre);
+    loader.classList.add("lds-ring");
+}
+
+
+function crearLoaderPuntos(elementoPadre){
+
+    let loader = crearLoader(elementoPadre);
+    loader.classList.add("lds-ellipsis");
+}   
+
+function eliminarTabla(){
+        let tabla = document.getElementById("tablaContactos");
+            if (tabla){
+                tabla.remove();
+            }
+}   
     </script>
