@@ -1,5 +1,53 @@
 <script>
 
+function insertarContacto() {
+   // const divContactos = document.getElementById("divContactos");
+
+    // obtener datos del formulario
+    const nombre = document.getElementById("nombre").value; 
+    const correo = document.getElementById("correo").value;
+    
+// eliminar tabla si existe
+    eliminarTabla();
+    
+    // crear loader
+    
+    //crearLoaderAnillo('divContactos');
+
+    crearLoaderPuntos('divContactos');;
+
+
+    google.script.run
+    .withSuccessHandler(contactoIngresadoCorrectamente)
+    .withFailureHandler(contactoIngresadoError) 
+    .insertarContacto(nombre, correo);
+
+   } 
+
+   function contactoIngresadoCorrectamente(){
+    // eliminamos datos del formulario
+    document.getElementById("nombre").value= "";
+    document.getElementById("correo").value= "";
+
+            // Mostrar notificación de éxito
+            crearNotificacionOK("Contacto ingresado correctamente","CONTACTO CREADO");
+            // eliminar loader
+            eliminarLoader();
+
+            // Mostrar tabla actualizada
+            crearTablaContactos();
+   }
+
+   function contactoIngresadoError(){
+
+            // Mostrar notificación de error
+            crearNotificacionError("No se ha podido ingresar el contacto" ,"ERROR");
+            // eliminar loader
+            eliminarLoader();
+
+            // Mostrar tabla actualizada
+            crearTablaContactos();
+        }
 
 function crearTablaContactos() {
    // const divContactos = document.getElementById("divContactos");

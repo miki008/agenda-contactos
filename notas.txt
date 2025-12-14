@@ -4,3 +4,4 @@ Vídeo 11__Notificaciones
 Vídeo 12__Tipos de 11__Notificaciones
 Vídeo 13__Refactorizando notificaciones ***Pendiente de hacer commit
 Vídeo 14__Crear icono de carga- Pure CSS loader -- loading.io/css/
+Vídeo 15__Insertar Contactos_visto una vez. Minuto 20:22
