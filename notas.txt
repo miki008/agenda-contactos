@@ -2,6 +2,7 @@ Vídeo 9
 Video 10__Footer y variables CSS
 Vídeo 11__Notificaciones
 Vídeo 12__Tipos de 11__Notificaciones
-Vídeo 13__Refactorizando notificaciones ***Pendiente de hacer commit
-Vídeo 14__Crear icono de carga- Pure CSS loader -- loading.io/css/
-Vídeo 15__Insertar Contactos_visto una vez. Minuto 20:22
+Vídeo 13__Refactorizando notificaciones.
+Vídeo 14__Crear icono de carga (loader) - Pure CSS loader -- loading.io/css/
+Vídeo 15__Insertar Contactos_visto. dialog
+Vídeo 16__Modidificar como obtenemos el formulario. Crear modal

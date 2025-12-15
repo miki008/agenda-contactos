@@ -6,6 +6,10 @@ function insertarContacto() {
     // obtener datos del formulario
     const nombre = document.getElementById("nombre").value; 
     const correo = document.getElementById("correo").value;
+
+    // cerrar modal
+
+ bootstrap.Modal.getInstance(document.getElementById('crearContactoModal')).hide(); // Returns a Bootstrap modal instance
     
 // eliminar tabla si existe
     eliminarTabla();
@@ -14,7 +18,7 @@ function insertarContacto() {
     
     //crearLoaderAnillo('divContactos');
 
-    crearLoaderPuntos('divContactos');;
+    crearLoaderPuntos('divContactos');
 
 
     google.script.run
