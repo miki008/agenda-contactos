@@ -29,13 +29,11 @@ function obtenerContactos(){
 }
 
 
-function insertarContacto(nombre, correo){
+function insertarContacto(nombre, apellidos,correo,telefono) 
+{
 
     let idNuevo = HOJA.getLastRow() ;
  
-   HOJA.appendRow([idNuevo,nombre, correo]);
-
-
-
+   HOJA.appendRow([idNuevo,nombre, apellidos,correo,telefono]);
 
 }

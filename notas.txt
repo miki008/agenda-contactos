@@ -6,3 +6,4 @@ Vídeo 13__Refactorizando notificaciones.
 Vídeo 14__Crear icono de carga (loader) - Pure CSS loader -- loading.io/css/
 Vídeo 15__Insertar Contactos_visto. dialog
 Vídeo 16__Modidificar como obtenemos el formulario. Crear modal
+Video 17_ Añadir nuevos campos al formulario. Validar. Insertar.***

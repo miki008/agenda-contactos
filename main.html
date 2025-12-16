@@ -36,7 +36,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="crearContactoModal" tabindex="-1" aria-labelledby="tituloCrearContactoModal" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-lg modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="tituloCrearContactoModal">Nuevo Contacto</h5>
@@ -46,15 +46,25 @@
 <form onsubmit="insertarContacto()" method="dialog" id = "Formulario">
  
       <div class="modal-body">
-
-  <div class = "mb-3">
+<!-- Nombre y Apellidos -->
+  <div class = "row mb-3"> 
+  <div class = "col-4">
   <label for = "nombre" class = "form-label"> Nombre: </label>
-  <input type = "text" class = "form-control" id = "nombre" name = "nombre" required>
+  <input type = "text" class = "form-control" id = "nombre" name = "nombre" pattern="[\D]*">
   </div>
 
-  <div class = "mb-3">
-    <label for = "correo" class = "form-label"> Correo: </label>
-    <input type = "email" class = "form-control" id = "correo" name = "correo" required>
+  <div class = "mb-3 col-8">
+  <label for = "apellidos" class = "form-label"> Apellidos: </label>
+  <input type = "text" class = "form-control" id = "apellidos" name = "apellidos" pattern="[\D]*" required>
+  </div>
+
+  </div>
+<!-- Correo y teléfono -->
+  <div class = "input-group mb-3">
+    <span class = "input-group-text"><i class="bi bi-envelope-fill"></i></span>
+    <input type = "email" class = "form-control me-4" id = "correo" name = "correo" required>
+     <span class = "input-group-text"><i class="bi bi-telephone-fill"></i></span>
+    <input type = "tel" class = "form-control" id = "telefono" name = "telefono" pattern="[\d]{9,11}" required>
   </div>
 
       </div>

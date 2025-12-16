@@ -5,7 +5,10 @@ function insertarContacto() {
 
     // obtener datos del formulario
     const nombre = document.getElementById("nombre").value; 
+    const apellidos = document.getElementById("apellidos").value;
     const correo = document.getElementById("correo").value;
+    const telefono = document.getElementById("telefono").value; 
+    
 
     // cerrar modal
 
@@ -24,7 +27,7 @@ function insertarContacto() {
     google.script.run
     .withSuccessHandler(contactoIngresadoCorrectamente)
     .withFailureHandler(contactoIngresadoError) 
-    .insertarContacto(nombre, correo);
+    .insertarContacto(nombre, apellidos,correo, telefono);
 
    } 
 
