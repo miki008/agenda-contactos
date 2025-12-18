@@ -5,9 +5,7 @@
 <div class="d-flex justify-content-center my-3">
 <!-- Botones Superiores --> 
     <button type = "button" class = "btn btn-success m-2" onclick="crearTablaContactos()"> Mostrar Contactos </button>
-    <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#crearContactoModal">
-  Nuevo Contacto
-</button>
+    <button type="button" class="btn btn-primary m-2" onclick="abrirModalCrearContacto()">Crear Contacto</button>
 </div>
 
 <!-- Tabla de contactos -->
@@ -39,7 +37,7 @@
   <div class="modal-lg modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="tituloCrearContactoModal">Nuevo Contacto</h5>
+        <h5 class="modal-title" id="tituloModal">Nuevo Contacto</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
              <!-- Formulario  crear contacto -->
@@ -70,7 +68,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-success">Crear contacto</button>
+        <button id = 'botonCrearModificar' type="submit" class="btn btn-success">Crear contacto</button>
       </div>
       </form>
     </div>

@@ -37,3 +37,20 @@ function insertarContacto(nombre, apellidos,correo,telefono)
    HOJA.appendRow([idNuevo,nombre, apellidos,correo,telefono]);
 
 }
+
+function borrarContacto(numFila){
+
+  HOJA.deleteRow(numFila);
+}
+
+function modificarContacto(numFila,datos){
+
+
+    let celdas = HOJA.getRange('B'+numFila+':E'+numFila);
+    celdas.setValues([[datos.nombre, datos.apellidos, datos.correo, datos.telefono]]);   
+
+  /* HOJA.getRange(numFila,2).setValue(nombre);
+  HOJA.getRange(numFila,3).setValue(apellidos);
+  HOJA.getRange(numFila,4).setValue(correo);
+  HOJA.getRange(numFila,5).setValue(telefono); */
+}
