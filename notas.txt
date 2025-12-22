@@ -11,4 +11,5 @@ Video 18_Borrar contactos.
 Video 19_Editar contactos.
 Vídeo 20_Stackear notificaciones. 
 Vídeo 21_
-Vídeo 22_Consumir API para generar contactos. ***9:29
+Vídeo 22_Consumir API para generar contactos.
+Vídeo 23_Imágenes API.

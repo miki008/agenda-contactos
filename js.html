@@ -117,6 +117,15 @@ let tabla = document.getElementById("tablaContactos");
                     let celda = document.createElement("td");
                     celda.textContent = obj[i][j];
                     fila.appendChild(celda);
+
+                    // Si es la columna imagen
+                    if (j == 5) {
+                        celda.textContent = '';
+                        let imagen = document.createElement("img");
+                        imagen.classList.add("imag-fluid","rounded");
+                        imagen.src = obj[i][j];
+                        celda.appendChild(imagen);
+                    }
                 }
                 // agregar los botones de la fila
                 fila.appendChild(crearCeldaBotones(i+1,obj[i])); // sumamos uno para borrar la fila correcta ya que la primera fila es la cabecera
