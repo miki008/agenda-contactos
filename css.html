@@ -8,21 +8,27 @@
 
     :root {
     --color-azul-claro: #7FB3D5;  
-    --color-azul-oscuro: #2874a6;    
-    --color-verde-claro: #d4efdf;
+    --color-azul-oscuro: #2874A6;    
+    --color-verde-claro: #D4EFDF;
     --color-verde-oscuro: #239856;
-    --color-rojo-oscuro: #c0392b;
-    --color-rojo-claro: #f5b7b1;
-    --color-amarillo-claro: #f9e79f;
-    --color-amarillo-oscuro: #d4ac0d;
-    --color-gris-claro: #e5e7e9;
-
+    --color-rojo-oscuro: #C0392B;
+    --color-rojo-claro: #F5B7B1;
+    --color-amarillo-claro: #fFE79F;
+    --color-amarillo-oscuro: #D4AC0D;
+    --color-gris-claro: #E5E7E9;
+    --color-gris-oscuro: #515A5A;
 
 }
 
 
 header {
     background-color: #e8f0fe;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .icono-footer {
@@ -37,6 +43,14 @@ header {
     transform: scale(1.2) ;
 }
 
+.icono-notificacion {
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+} 
+
+.div-notificaciones {
+    z-index: 11;
+} 
 
 /* LOADER ANILLO */
 

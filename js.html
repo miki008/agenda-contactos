@@ -37,7 +37,7 @@ function insertarContacto() {
     document.getElementById("correo").value= "";
 
             // Mostrar notificación de éxito
-            crearNotificacionOK("Contacto ingresado correctamente","CONTACTO CREADO");
+            crearNotificacionContacto("Contacto ingresado correctamente","CONTACTO CREADO");
             // eliminar loader
             eliminarLoader();
 
@@ -80,6 +80,7 @@ function crearTablaContactos() {
 /*  */
 
 function crearTablaContactosCorrectamente(obj){
+   // eliminarLoader();
 let tabla = document.getElementById("tablaContactos");
             if (tabla){
                 tabla.remove();
@@ -136,8 +137,8 @@ let tabla = document.getElementById("tablaContactos");
             document.getElementById("divContactos").appendChild(tabla); 
         
             // Mostrar notificación de éxito
-            crearNotificacionOK("Contactos obtenidos correctamente"," Todo en orden");
-
+            //crearNotificacionOK("Contactos obtenidos correctamente"," Todo en orden");
+          
 
             // eliminar loader
             eliminarLoader();
@@ -269,7 +270,7 @@ function modificarContacto(numFila){
 
 function contactoModificadoCorrectamente(){
   // Mostrar notificación de éxito
-            crearNotificacionOK("Contacto modificado correctamente","CONTACTO MODIFICADO OK");
+            crearNotificacionAdvertencia("Contacto modificado correctamente","CONTACTO MODIFICADO OK");
             // eliminar loader
             eliminarLoader();
 
@@ -310,7 +311,7 @@ function borrarContacto(numFila){
 
 function contactoBorradoCorrectamente(){
   // Mostrar notificación de éxito
-            crearNotificacionOK("Contacto borradocorrectamente","CONTACTO BORRADO OK");
+            crearNotificacionBorrar("Contacto borrado correctamente","CONTACTO BORRADO OK");
             // eliminar loader
             eliminarLoader();
 
@@ -336,70 +337,42 @@ function contactoBorradoError(){
         }
 
 
-function crearNotificacion(mensaje, titulo){
-
-            // obenemos datos
-            document.getElementById("mensajeNotificacion").textContent  = mensaje;
-            document.getElementById("tituloNotificacion").textContent  = titulo;     
-            
-            // elemento notificación
-            let elementoNotificacion = document.getElementById("notificacion");
-            bootstrap.Toast.getOrCreateInstance(elementoNotificacion).show();
-
-            
-}
-
-function crearNotificacionOK(mensaje, titulo){
-   
-    crearNotificacion(mensaje, titulo);
-    crearIconoNotificacionOK();
-    crearColorNotificacion('--color-verde-oscuro');
-
-}
-
-function crearNotificacionError(mensaje, titulo){
-
-    crearNotificacion(mensaje, titulo);
-    crearIconoNotificacionError();
-    crearColorNotificacion('--color-rojo-oscuro');
+function importarContacto(){
+  // eliminar tabla si existe
+    eliminarTabla();
     
-}
-
-function crearNotificacionAdvertencia(mensaje, titulo){
+    // crear loader
     
-    crearNotificacion(mensaje, titulo);
-    crearIconoNotificacionAdvertencia();
-   crearColorNotificacion('--color-amarillo-oscuro');
+    //crearLoaderAnillo('divContactos');
+
+    crearLoaderPuntos('divContactos');    
+    google.script.run
+    .withSuccessHandler(contactosImportadosCorrectamente)
+    .withFailureHandler(contactosImportadosError)
+    .importarContactos();   
 }
 
+function contactosImportadosCorrectamente(){
+    // Mostrar notificación de éxito
+            crearNotificacionOK("Contactos importados correctamente"," CONTACTOS IMPORTADOS");
+            // eliminar loader
+            eliminarLoader();
 
-function crearIconoNotificacionOK(){
-
-    document.getElementById('iconoNotificacion').className = "";
-    document.getElementById('iconoNotificacion').classList.add("bi", "bi-check2-square");
-    
+            // Mostrar tabla actualizada
+            crearTablaContactos();
 }
 
-function crearIconoNotificacionError(){
+function contactosImportadosError(){
+ // Mostrar notificación de error
+            crearNotificacionError("No se han podido importar los contactos" ,"ERROR");
+            // eliminar loader
+            eliminarLoader();
 
-    document.getElementById('iconoNotificacion').className = "";
-    document.getElementById('iconoNotificacion').classList.add("bi", "bi-bug");
-    
-}
+            // Mostrar tabla actualizada
+            crearTablaContactos();
+}   
 
 
-function crearIconoNotificacionAdvertencia(){
-
-    document.getElementById('iconoNotificacion').className = "";
-    document.getElementById('iconoNotificacion').classList.add("bi", "bi-exclamation-square");
-    
-}
-
-function crearColorNotificacion(color){
-  
-                let elementoNotificacion = document.getElementById("notificacion");
-                elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue(color);   
-}
 
 
 function crearLoader(elementoPadre){

@@ -29,6 +29,8 @@ function obtenerContactos(){
 }
 
 
+
+
 function insertarContacto(nombre, apellidos,correo,telefono) 
 {
 
@@ -53,4 +55,19 @@ function modificarContacto(numFila,datos){
   HOJA.getRange(numFila,3).setValue(apellidos);
   HOJA.getRange(numFila,4).setValue(correo);
   HOJA.getRange(numFila,5).setValue(telefono); */
+}
+
+
+function importarContactos(){
+  let url = "https://randomuser.me/api/?results=5&inc=name, email, phone";
+  let respuesta = UrlFetchApp.fetch(url);
+  let datos = JSON.parse(respuesta.getContentText());
+
+  datos.results.forEach(insertarContactoJSON);
+
+}
+
+function insertarContactoJSON(contacto){
+  let idNuevo = HOJA.getLastRow() ;
+HOJA.appendRow([idNuevo,contacto.name.first, contacto.name.last,contacto.email, contacto.phone]);
 }

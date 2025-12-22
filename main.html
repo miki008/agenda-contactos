@@ -6,6 +6,7 @@
 <!-- Botones Superiores --> 
     <button type = "button" class = "btn btn-success m-2" onclick="crearTablaContactos()"> Mostrar Contactos </button>
     <button type="button" class="btn btn-primary m-2" onclick="abrirModalCrearContacto()">Crear Contacto</button>
+    <button type="button" class="btn btn-warning m-2" onclick="importarContacto()">+5 aleatorios</button>
 </div>
 
 <!-- Tabla de contactos -->
@@ -15,20 +16,12 @@
 
 
 <!-- Notificaciones -->
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+<div class="div-notificaciones position-fixed bottom-0 end-0 p-3">
 
-<!-- Toast -->
-<div id="notificacion" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
-
-    <div class="toast-header p-0">
-      <div class="icono-notificacion me-2"><i id ="iconoNotificacion"></i></div>
-      <strong class="me-auto" id="tituloNotificacion"></strong>
-      <button type="button" class="btn-close m-2" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-
-    <div class="toast-body" id="mensajeNotificacion"></div>
-
+  <div class="toast-container" id="contenedorNotificaciones">
+    <!-- Aquí van las notificaciones-->
   </div>
+
 </div>
 
 

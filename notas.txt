@@ -9,3 +9,6 @@ Vídeo 16__Modidificar como obtenemos el formulario. Crear modal
 Video 17_ Añadir nuevos campos al formulario. Validar. Insertar.
 Video 18_Borrar contactos.
 Video 19_Editar contactos.
+Vídeo 20_Stackear notificaciones. 
+Vídeo 21_
+Vídeo 22_Consumir API para generar contactos. ***9:29
