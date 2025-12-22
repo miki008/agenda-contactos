@@ -1,5 +1,21 @@
 <script>
 
+// botón subir
+window.addEventListener('scroll', function() {
+    const subirArriba = document.querySelector('.subir-arriba');
+    if (window.scrollY > 500) {
+        subirArriba.style.transform = 'scale(1)';
+    } else {
+        subirArriba.style.transform = 'scale(0)';
+    }
+});
+
+function subirArriba() {
+   document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera  
+   document.body.scrollTop = 0; // Para Safari
+} 
+
+
 function insertarContacto() {
    // const divContactos = document.getElementById("divContactos");
 
