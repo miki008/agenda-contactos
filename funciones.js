@@ -22,7 +22,7 @@ function obtenerDatosHTML(nombre) {
 }
 
 
-function obtenerContactos(){
+function obtenerDatos(){
     
     return HOJA.getDataRange().getValues();
     

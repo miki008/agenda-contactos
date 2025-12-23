@@ -10,8 +10,9 @@ Video 17_ Añadir nuevos campos al formulario. Validar. Insertar.
 Video 18_Borrar contactos.
 Video 19_Editar contactos.
 Vídeo 20_Stackear notificaciones. 
-Vídeo 21_
+Vídeo 21_Icono con lottie
 Vídeo 22_Consumir API para generar contactos.
 Vídeo 23_Imágenes API.
 Video 24_Botón scroll to top
 Vídeo 25_Diseño de tarjetas
+vídeo 26_Refactorizando tabla y tarjetas ***
