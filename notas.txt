@@ -14,3 +14,4 @@ Vídeo 21_
 Vídeo 22_Consumir API para generar contactos.
 Vídeo 23_Imágenes API.
 Video 24_Botón scroll to top
+Vídeo 25_Diseño de tarjetas

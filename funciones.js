@@ -69,5 +69,5 @@ function importarContactos(){
 
 function insertarContactoJSON(contacto){
   let idNuevo = HOJA.getLastRow() ;
-HOJA.appendRow([idNuevo,contacto.name.first, contacto.name.last,contacto.email, contacto.phone,contacto.picture.medium]);
+HOJA.appendRow([idNuevo,contacto.name.first, contacto.name.last,contacto.email, contacto.phone,contacto.picture.large]);
 }
