@@ -10,6 +10,14 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// cargar imagen
+    document.getElementById("imagen").addEventListener("change", function(){
+
+    document.getElementById("imgForm").src = URL.createObjectURL(this.files[0])
+        });
+    
+
+
 function subirArriba() {
    document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera  
    document.body.scrollTop = 0; // Para Safari
@@ -40,31 +48,66 @@ function mostrar(){
 
 // INSERTAR CONTACTOS
 
-function insertarContacto() {
+    function insertarContacto() {
 
-    limpiar();
-   // const divContactos = document.getElementById("divContactos");
+        limpiar();
+        // cerrar modal
+        bootstrap.Modal.getInstance(document.getElementById('crearContactoModal')).hide(); // Returns a Bootstrap modal instance
 
-    // obtener datos del formulario
-    const nombre = document.getElementById("nombre").value; 
-    const apellidos = document.getElementById("apellidos").value;
-    const correo = document.getElementById("correo").value;
-    const telefono = document.getElementById("telefono").value; 
-    
+        let contacto = guardarDatosContacto();
+        let archivo = document.getElementById("imagen").files[0];
 
-    // cerrar modal
+        if(archivo) subirImagen(contacto, archivo);
+        else
+        {
+google.script.run
+            .withSuccessHandler(contactoIngresadoCorrectamente)
+            .withFailureHandler(contactoIngresadoError)
+            .insertarContacto(contacto);
 
- bootstrap.Modal.getInstance(document.getElementById('crearContactoModal')).hide(); // Returns a Bootstrap modal instance
-    
+        }
+        
+    } 
 
+    function guardarDatosContacto(){
+// obtener datos del formulario
+        const nombre = document.getElementById("nombre").value;
+        const apellidos = document.getElementById("apellidos").value;
+        const correo = document.getElementById("correo").value;
+        const telefono = document.getElementById("telefono").value;
+        const imagen = document.getElementById("imgForm").src;
 
+        let contacto = 
+        {
+            nombre: nombre,
+            apellidos: apellidos,
+            correo: correo,
+            telefono: telefono,
+            imagen: imagen
+        };
 
-    google.script.run
-    .withSuccessHandler(contactoIngresadoCorrectamente)
-    .withFailureHandler(contactoIngresadoError) 
-    .insertarContacto(nombre, apellidos,correo, telefono);
+        return contacto;
 
-   } 
+    }
+
+    function subirImagen(contacto,archivo){
+        let fr = new FileReader();
+        fr.readAsArrayBuffer(archivo);
+
+        fr.onload = function ()
+        {
+            let imagen = 
+            {
+                nombre: archivo.name,
+                tipo: archivo.type,
+                datos: Array.from(new Int8Array(this.result)) 
+            };
+            google.script.run
+            .withSuccessHandler(contactoIngresadoCorrectamente)
+            .withFailureHandler(contactoIngresadoError)
+            .insertarContacto(contacto,imagen);
+        }
+    }
 
    function contactoIngresadoCorrectamente(){
     // eliminamos datos del formulario

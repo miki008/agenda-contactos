@@ -1,5 +1,8 @@
 <script>
 
+// const IMAGEN_PERFIL_INICIO = "https://drive.google.com/uc?export=view&id=1_XrGNpM9-Uv98BgtnJK8Hixw9k7MQNwj";
+const IMAGEN_PERFIL_INICIO = "https://drive.google.com/thumbnail?id=1_XrGNpM9-Uv98BgtnJK8Hixw9k7MQNwj&sz=w1000";
+
 function abrirModalCrearContacto(){
  // botón crear Contacto
     let boton = document.getElementById("botonCrearModificar");  
@@ -19,6 +22,8 @@ function abrirModalCrearContacto(){
     document.getElementById("apellidos").value= '';   
     document.getElementById("correo").value= '';
     document.getElementById("telefono").value= '';
+    document.getElementById("imagen").value = '';
+    document.getElementById("imgForm").src = IMAGEN_PERFIL_INICIO;
 
     // abrir modal  
 
