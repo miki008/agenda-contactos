@@ -1,6 +1,8 @@
 const HOJA = SpreadsheetApp.openById('14qFioWE5iplfM3aNSgctBvsin6kQz4H0vacB5V1337M').getActiveSheet();
 const CARPETA = DriveApp.getFolderById("1qeXyTKCh-Ifcdry7WnU5e6dj_CvIKCgz");
 const CABECERA_URL_IMAGEN_DRIVE = "https://drive.google.com/thumbnail?id=";
+
+
 function doGet() {
 
 return HtmlService.createTemplateFromFile('web').evaluate().setTitle('AgendaWebApp');
@@ -14,8 +16,6 @@ function doPost(datos) {
 }
 
 
-
-
 function obtenerDatosHTML(nombre) { 
     return HtmlService.createHtmlOutputFromFile(nombre).getContent();
 
@@ -27,9 +27,6 @@ function obtenerDatos(){
     return HOJA.getDataRange().getValues();
     
 }
-
-
-
 
 function insertarContacto(contacto, imagen) 
 {
