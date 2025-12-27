@@ -57,7 +57,7 @@ function mostrar(){
         let contacto = guardarDatosContacto();
         let archivo = document.getElementById("imagen").files[0];
 
-        if(archivo) subirImagen(contacto, archivo);
+        if(archivo) subirImagenInsertar(contacto, archivo);
         else
         {
 google.script.run
@@ -90,7 +90,7 @@ google.script.run
 
     }
 
-    function subirImagen(contacto,archivo){
+    function subirImagenInsertar(contacto,archivo){
         let fr = new FileReader();
         fr.readAsArrayBuffer(archivo);
 
@@ -108,6 +108,7 @@ google.script.run
             .insertarContacto(contacto,imagen);
         }
     }
+
 
    function contactoIngresadoCorrectamente(){
     // eliminamos datos del formulario
@@ -140,29 +141,42 @@ function modificarContacto(numFila){
         bootstrap.Modal.getOrCreateInstance(document.getElementById('crearContactoModal')).hide();
 
 // obtener nuevos datos a partir del formulario
-    const nombre = document.getElementById("nombre").value; 
-    const apellidos = document.getElementById("apellidos").value;
-    const correo = document.getElementById("correo").value;
-    const telefono = document.getElementById("telefono").value; 
-    
+    let contacto = guardarDatosContacto();
+    contacto.fila = numFila;
 
-    let contactoModificado = {
-        nombre: nombre,
-        apellidos: apellidos,
-        correo: correo,
-        telefono: telefono
-    };
+let archivo = document.getElementById("imagen").files[0];
 
+        if(archivo) subirImagenModificar(contacto, archivo);
+        else
+        {
+        google.script.run
+            .withSuccessHandler(contactoModificadoCorrectamente)
+            .withFailureHandler(contactoModificadoError)
+            .modificarContacto(contacto);
 
-
-
-    google.script.run
-    .withSuccessHandler(contactoModificadoCorrectamente)
-    .withFailureHandler(contactoModificadoError) 
-    .modificarContacto(numFila,{nombre,apellidos,correo,telefono});
+        }
 
 
 }
+
+ function subirImagenModificar(contacto,archivo){
+        let fr = new FileReader();
+        fr.readAsArrayBuffer(archivo);
+
+        fr.onload = function ()
+        {
+            let imagen = 
+            {
+                nombre: archivo.name,
+                tipo: archivo.type,
+                datos: Array.from(new Int8Array(this.result)) 
+            };
+            google.script.run
+            .withSuccessHandler(contactoModificadoCorrectamente)
+            .withFailureHandler(contactoModificadoError)
+            .modificarContacto(contacto,imagen);
+        }
+    }
 
 function contactoModificadoCorrectamente(){
   // Mostrar notificación de éxito

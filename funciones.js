@@ -28,40 +28,57 @@ function obtenerDatos(){
     
 }
 
-function insertarContacto(contacto, imagen) 
+
+function insertarContacto(contacto,imagen) 
 {
+    // Calculamos el ID (puedes ajustarlo según tu lógica)
+    let idNuevo = HOJA.getLastRow() + 1; 
+    //Logger.log(idNuevo);
+  
+   if(imagen) contacto.imagen = guardarImagen(imagen,contacto);
+   
+    // Insertar en la hoja de cálculo
+    HOJA.appendRow([idNuevo, contacto.nombre, contacto.apellidos, contacto.correo, contacto.telefono, contacto.imagen]);
+}
 
-    let idNuevo = HOJA.getLastRow() ;
 
-    if(imagen)
-    {
-      let blob = Utilities.newBlob(imagen.datos, imagen.tipo, imagen.nombre);
-      let archivo = CARPETA.createFile(blob);
-      contacto.imagen = CABECERA_URL_IMAGEN_DRIVE+archivo.getId();
-    }
- 
-   HOJA.appendRow([idNuevo,contacto.nombre, contacto.apellidos,contacto.correo,contacto.telefono,contacto.imagen]);
+function modificarContacto(contacto,imagen){
+
+ if(imagen) contacto.imagen = guardarImagen(imagen,contacto);
+
+    let celdas = HOJA.getRange('B'+contacto.fila+':F'+contacto.fila);
+    celdas.setValues([[contacto.nombre, contacto.apellidos, contacto.correo, contacto.telefono,contacto.imagen]]);   
 
 }
+
+function guardarImagen(imagen,contacto){
+if(imagen)
+    {
+      // 1. Extraer la extensión del archivo original
+      let extension = imagen.nombre.split('.').pop(); 
+      
+      // 2. Construir el nuevo nombre
+      let nuevoNombre = contacto.nombre + "_" + contacto.apellidos + "." + extension;
+
+      // 3. Crear el Blob SIN pasarle el nombre original en el constructor
+      let blob = Utilities.newBlob(imagen.datos, imagen.tipo);
+      // 4. ASIGNAR EL NOMBRE AL BLOB (Esto es lo más seguro)
+      blob.setName(nuevoNombre);
+      
+      // 5. Crear el archivo (heredará el nombre del blob)
+      let archivo = CARPETA.createFile(blob);
+      
+      // Guardar la URL con el ID
+      return CABECERA_URL_IMAGEN_DRIVE + archivo.getId();
+    }
+
+}
+
 
 function borrarContacto(numFila){
 
   HOJA.deleteRow(numFila);
 }
-
-function modificarContacto(numFila,datos){
-
-
-    let celdas = HOJA.getRange('B'+numFila+':E'+numFila);
-    celdas.setValues([[datos.nombre, datos.apellidos, datos.correo, datos.telefono]]);   
-
-  /* HOJA.getRange(numFila,2).setValue(nombre);
-  HOJA.getRange(numFila,3).setValue(apellidos);
-  HOJA.getRange(numFila,4).setValue(correo);
-  HOJA.getRange(numFila,5).setValue(telefono); */
-}
-
-
 function importarContactos(){
   let url = "https://randomuser.me/api/?results=5&inc=name, email, phone,picture";
   let respuesta = UrlFetchApp.fetch(url);

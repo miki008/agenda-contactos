@@ -16,4 +16,5 @@ Vídeo 23_Imágenes API.
 Video 24_Botón scroll to top
 Vídeo 25_Diseño de tarjetas
 vídeo 26_Refactorizando tabla y tarjetas
-Video 27_Guardar y cargar imágenes****empezar a editar de 0
+Video 27_Guardar y cargar imágenes
+Vídeo 28_Modificar contacto 12:14
