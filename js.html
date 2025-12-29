@@ -1,5 +1,26 @@
 <script>
 
+//////////////////////////////////////////
+// CONSTANTES
+/////////////////////////////////////////
+const ICONO_CHECK = 'bi-check2-square';
+        const ICONO_PAPELERA = 'bi-trash';
+        const ICONO_CONTACTO = 'bi-person-plus-fill';
+        const ICONO_ERROR = 'bi-bug';
+        const ICONO_ADVERTENCIA = 'bi-exclamation-square';
+        
+  
+        const LOTTIE_CHECK = "https://lottie.host/f1b3fedc-c7d8-45e7-bfe2-fb03101419cb/JqH5z6jKBv.json"//"https://assets3.lottiefiles.com/packages/lf20_jbrw3hcz.json";
+        const LOTTIE_PAPELERA = "https://lottie.host/ff176429-e5b1-4af3-8a21-93bd3480d3b1/2gzSM8D2l2.json"//"https://assets8.lottiefiles.com/packages/lf20_touohxv0.json";
+        const LOTTIE_CONTACTO = "https://lottie.host/e3c59bf6-ea81-4395-9bca-84664cdd4773/ip3XzOCLKm.json"//"https://assets1.lottiefiles.com/packages/lf20_yr6zz3wv.json";
+        const LOTTIE_ERROR = "https://lottie.host/96d83537-330e-4fee-b787-e5e56a133241/6zvGiTaVih.json" //"https://assets10.lottiefiles.com/packages/lf20_j1adxtyb.json";
+        const LOTTIE_ADVERTENCIA = "https://lottie.host/043907e1-399a-436b-84f1-ea3c318c7de0/iG2FZx5rXB.json"//"https://assets2.lottiefiles.com/packages/lf20_khzniaya.json";
+
+//////////////////////////////////////////
+// EVENTOS
+/////////////////////////////////////////
+
+
 // botón subir
 window.addEventListener('scroll', function() {
     const subirArriba = document.querySelector('.subir-arriba');
@@ -17,6 +38,47 @@ window.addEventListener('scroll', function() {
         });
     
 
+// dragover
+document.getElementById("imgForm").addEventListener('dragover', function(event)
+
+{
+event.preventDefault();
+this.style.filter = "opacity(0%)";
+/* document.getElementById("cajaIconoForm").style.display = "flex"; */
+document.getElementById("lottieForm").style.display = "flex";
+
+});
+
+// dragleave
+document.getElementById("imgForm").addEventListener('dragleave', function(event)
+
+{
+this.style.filter = "opacity(100%)";
+/* document.getElementById("cajaIconoForm").style.display = "none"; */
+document.getElementById("lottieForm").style.display = "none";
+});
+
+
+// drop
+
+document.getElementById("imgForm").addEventListener('drop', function(event)
+
+{
+    event.preventDefault();
+
+    let ficheros = event.dataTransfer.files;
+
+    // pasmos los archivos al input
+    document.getElementById("imagen").files = ficheros;
+
+    // creamos una url para mostrar la imagen
+    document.getElementById("imgForm").src = URL.createObjectURL(ficheros[0])
+
+    // mostramos la imagen y quitamos zona de carga
+    this.style.filter = "opacity(100%)";
+    /* document.getElementById("cajaIconoForm").style.display = "none"; */
+    document.getElementById("lottieForm").style.display = "none";
+    });
 
 function subirArriba() {
    document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera  
@@ -250,7 +312,11 @@ function contactosImportadosError(){
 }   
 
 
-
+// HABILITAR  BOOTSTRAP
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
 
 
 

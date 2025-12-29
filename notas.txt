@@ -17,4 +17,7 @@ Video 24_Botón scroll to top
 Vídeo 25_Diseño de tarjetas
 vídeo 26_Refactorizando tabla y tarjetas
 Video 27_Guardar y cargar imágenes
-Vídeo 28_Modificar contacto 12:14
+Vídeo 28_Modificar contacto
+Vídeo 29_Añadir lottie a loader. REVISAR LOADER DE LA CARGA DE IMAGEN. NO LO HEMOS HECHO.
+Video 30_Drag and drop de imágenes.
+Vídeo 31_Drag and drop con popover y lottie ******
