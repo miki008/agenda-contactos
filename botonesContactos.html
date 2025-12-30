@@ -7,7 +7,7 @@
         botonInfo.id = "botonInfo" + contacto.fila;
         botonInfo.classList.add("btn", "btn-success", "me-1");
         //botonInfo.textContent = "Info";
-        botonInfo.onclick = () => mostrarInformacionAdicionalContacto(contacto);
+        botonInfo.onclick = () => abrirModalInfoContacto(contacto);
 
         // agregar icono
         let iconoInfo = document.createElement("i");

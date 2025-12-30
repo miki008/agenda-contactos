@@ -60,5 +60,15 @@ function abrirModalModificarContacto(contacto){
 }
 
 
+function abrirModalInfoContacto(contacto)
+{
+     // obtener datos del contacto
+    document.getElementById("nombreInfoContacto").textContent= contacto.nombre+' '+ contacto.apellidos; 
+    document.getElementById("correoInfoContacto").textContent= contacto.correo;
+    document.getElementById("telefonoInfoContacto").textContent= contacto.telefono;
+    document.getElementById("imgInfoContacto").src = contacto.imagen;
+
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('infoContactoModal')).show();
+}
     
 </script>

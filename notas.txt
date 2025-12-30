@@ -20,4 +20,5 @@ Video 27_Guardar y cargar imágenes
 Vídeo 28_Modificar contacto
 Vídeo 29_Añadir lottie a loader. REVISAR LOADER DE LA CARGA DE IMAGEN. NO LO HEMOS HECHO.
 Video 30_Drag and drop de imágenes.
-Vídeo 31_Drag and drop con popover y lottie ******
+Vídeo 31_Drag and drop con popover y lottie
+Vídeo 32_Modal de información con iconos de copiado ***

@@ -80,6 +80,63 @@ document.getElementById("imgForm").addEventListener('drop', function(event)
     document.getElementById("lottieForm").style.display = "none";
     });
 
+
+
+document.getElementById("copiarCorreo").addEventListener('click', function(event)
+
+{
+    copiarContenido(this, 'correoInfoContacto');
+});
+
+
+document.getElementById("copiarTelefono").addEventListener('click', function(event)
+
+{ 
+    copiarContenido(this, 'telefonoInfoContacto');
+});
+
+
+function copiarContenido(icono, id)
+{
+    let texto = document.getElementById(id).textContent;
+    navigator.clipboard.writeText(texto)
+        .then(()=>{
+
+        icono.classList.remove('bi-clipboard');
+        icono.classList.add('bi-check-lg');
+        icono.title = 'Copiado';
+        bootstrap.Tooltip.getOrCreateInstance(icono).show();
+        restaurarIcono(icono);
+   
+    })
+    .catch() =>
+    {
+        icono.title = 'Error al copiar';
+        bootstrap.Tooltip.getOrCreateInstance(icono).show();
+        restaurarIcono(icono);
+    }
+}
+
+function restaurarIcono(icono)
+
+{
+
+        setTimeout(function()
+        {
+            icono.classList.remove('bi-check-lg');
+            icono.classList.add('bi-clipboard');
+            icono.title = '';
+            bootstrap.Tooltip.getInstance(icono).dispose();
+
+        },2000);
+}
+
+
+
+    ///////////////////////////////////////////
+    //***************************************//
+    //////////////////////////////////////////
+
 function subirArriba() {
    document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera  
    document.body.scrollTop = 0; // Para Safari
@@ -317,6 +374,12 @@ var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
 })
+
+// HABILITAR TOOLTIPS
+/* var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+}) */
 
 
 

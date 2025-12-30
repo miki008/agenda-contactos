@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal -Crar Modificar Contacto -->
   <div
     class="modal fade"
     id="crearContactoModal"
@@ -154,6 +154,49 @@
             <button id="botonCrearModificar" type="submit" class="btn btn-success">Crear contacto</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Info Contacto-->
+
+  <div class="modal fade"id="infoContactoModal"tabindex="-1"aria-labelledby="tituloInfoContactoModal"aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+            
+          <div class="modal-body">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+
+              <!-- Parte Superior-->
+              <div class="m-3">
+                <h3 class = "text-uppercase text-center fw-bold mb-2" id = "nombreInfoContacto"></h3>
+
+                <div class = "d-flex align-items-center">
+                  <i class = "bi bi-envelope-fill me-2"></i>
+                  <h5 class = "me-4" id = "correoInfoContacto"></h5>
+                  <i id = "copiarCorreo" class = "bi bi-clipboard boton-copiar" data-bs-toggle="tooltip" data-bs-placement="right" title="Copiado">                  </i>
+                </div>
+
+                  <div class = "d-flex align-items-center">
+                  <i class = "bi bi-telephone-fill me-2"></i>
+                  <h5 class = "me-4" id = "telefonoInfoContacto"></h5>
+                  <i id = "copiarTelefono" class = "bi bi-clipboard boton-copiar" data-bs-toggle="tooltip" data-bs-placement="right" title="Copiado"></i>
+                </div>
+  
+              </di>
+
+              <!-- Parte Inferior-->
+              <div class="m-3">
+                <img id = "imgInfoContacto" class = "border border-4 border-dark rounded" alt = "Vista previa de la imagen del contacto"> 
+            </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+           
+          </div>
       </div>
     </div>
   </div>
