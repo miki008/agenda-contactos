@@ -18,7 +18,8 @@ Vídeo 25_Diseño de tarjetas
 vídeo 26_Refactorizando tabla y tarjetas
 Video 27_Guardar y cargar imágenes
 Vídeo 28_Modificar contacto
-Vídeo 29_Añadir lottie a loader. REVISAR LOADER DE LA CARGA DE IMAGEN. NO LO HEMOS HECHO.
-Video 30_Drag and drop de imágenes.
-Vídeo 31_Drag and drop con popover y lottie
-Vídeo 32_Modal de información con iconos de copiado ***
+Vídeo 29_Añadir lottie a loader. REVISAR LOADER DE LA CARGA DE IMAGEN. NO LO HEMOS HECHO.https://www.youtube.com/watch?v=QKa6H7NmDBE&list=PLG1qdjD__qH4dyXq4sM03Rf0RFhB_4tbm&index=65
+Video 30_Drag and drop de imágenes. https://www.youtube.com/watch?v=QKa6H7NmDBE&list=PLG1qdjD__qH4dyXq4sM03Rf0RFhB_4tbm&index=66
+Vídeo 31_Drag and drop con popover y lottie. https://www.youtube.com/watch?v=QKa6H7NmDBE&list=PLG1qdjD__qH4dyXq4sM03Rf0RFhB_4tbm&index=67
+Vídeo 32_Modal de información con iconos de copiado. https://www.youtube.com/watch?v=QKa6H7NmDBE&list=PLG1qdjD__qH4dyXq4sM03Rf0RFhB_4tbm&index=68
+vídeo 33_Diseño con template HTML. https://www.youtube.com/watch?v=QKa6H7NmDBE&list=PLG1qdjD__qH4dyXq4sM03Rf0RFhB_4tbm&index=69   *** 20:47

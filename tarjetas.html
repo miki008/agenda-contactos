@@ -4,8 +4,10 @@
     // Tarjetas de contactos
     function crearTarjetaContactos() {
         // Asegúrate de tener definida la función limpiar() o usa eliminarTarjetas()
-        eliminarTarjetas(); 
-        crearLoaderPuntos("divContactos");
+    /*     eliminarTarjetas(); 
+        crearLoaderPuntos("divContactos"); */
+
+        limpiar();
 
         google.script.run
             .withSuccessHandler(crearTarjetasCorrectamente) // Nombre corregido

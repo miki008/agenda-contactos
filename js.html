@@ -100,7 +100,8 @@ function copiarContenido(icono, id)
 {
     let texto = document.getElementById(id).textContent;
     navigator.clipboard.writeText(texto)
-        .then(()=>{
+        .then(()=>
+    {
 
         icono.classList.remove('bi-clipboard');
         icono.classList.add('bi-check-lg');
@@ -109,12 +110,12 @@ function copiarContenido(icono, id)
         restaurarIcono(icono);
    
     })
-    .catch() =>
+    .catch(() =>
     {
         icono.title = 'Error al copiar';
         bootstrap.Tooltip.getOrCreateInstance(icono).show();
         restaurarIcono(icono);
-    }
+    });
 }
 
 function restaurarIcono(icono)
